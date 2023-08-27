@@ -121,7 +121,7 @@ function building(){
     return src([
         'app/css/style.min.css',
         'app/images/dist/*.*',
-        '!app/images/dist/*.svg',
+        //'!app/images/dist/*.svg',
         'app/images/dist/**/sprite.svg',
         'app/fonts/dist/*.*',
         'app/js/main.min.js',
