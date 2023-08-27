@@ -1,0 +1,39 @@
+@import 'vars';
+@import 'fonts';
+@import 'reset';
+@import 'libs';
+@import 'global';
+
+.header{
+    &__inner{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 120px;
+    }
+    &__btn{
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+    }
+}
+
+.menu{
+    padding-right: 15px;
+    &__list{
+        display: flex;
+    }
+    &__list-item{
+        padding-left: 35px;
+        padding-right: 45px;
+    }
+    &__list-link{
+    @extend %title-font;
+    }
+}
+
+.logo{
+    margin: 0 auto;
+
+}
