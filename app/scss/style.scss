@@ -5,7 +5,6 @@
 @import '_global';
 
 .header{
-    margin-bottom: 50px;
     background-color: $firstColor;
     &__inner{
         display: flex;
@@ -42,6 +41,27 @@
 .logo{
     margin: 0 ;
 
+}
+
+.bread__crumbs{
+    background-color: $secondColor;
+    padding: 13px 14px;
+    margin-bottom: 40px;
+    &-list{
+        display: flex;
+    }
+    &-item::after{
+        content: '/';
+        margin-left: -4px;
+        margin-right: 4px;
+    }
+    &-item:last-child::after{
+        display: none;
+    }
+    &-link{
+        font-size: 14px;
+        color: $firstColor;
+    }
 }
 
 .footer{
@@ -207,6 +227,8 @@
     &__text{
         min-width: 700px;
         margin: 0 auto 30px;
+        text-align: justify;
+        margin-bottom: 15px;
     }
 }
 
@@ -337,6 +359,54 @@
     height: 100%;
     object-fit: cover;
   }
+
+  .about{
+    &__prev{
+        background-image: url(../images/dist/slider1.avif);
+        height: 350px;
+        background-repeat: no-repeat;
+        background-position:bottom ;
+        text-align: center;
+        padding: 160px 0;
+        opacity: 0.8;
+        margin-top: -95px;
+        &-title{
+            color: $firstColor;
+            font-size: 60px;
+            font-weight: 700;
+        }
+    }
+    &__content{
+        padding: 90px 0 40px;
+    }
+    &__title{
+        color: $firstColor;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 60px;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        position: relative;
+        &::after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 150px;
+            height: 1px;
+            background-color: $firstColor;
+
+        }
+    }
+    &__text{
+        p{
+            padding-left: 160px;
+            margin-bottom: 30px;
+        }
+    }
+  }
+
+
   
 
  
