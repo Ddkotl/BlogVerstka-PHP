@@ -74,7 +74,7 @@ function sprite(){
 
 function scripts(){
     return src([
-        'node_modules/swiper/swiper.js',
+        'app/js/swiper-bundle.min.js',
         'app/js/main.js'
     ])
     .pipe(concat('main.min.js'))
@@ -85,7 +85,7 @@ function scripts(){
 
 function styles(){
     return src([
-        
+        'app/css/swiper-bundle.min.css',
         'app/scss/style.scss'
     ])
     .pipe(autoprefixer({overrideBrowserslist:['last 10 version']}))
