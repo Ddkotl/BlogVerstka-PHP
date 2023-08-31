@@ -24,7 +24,8 @@
 .menu{
     &__list{
         display: flex;
-        gap: 30px
+        gap: 30px;
+        
     }
     &__list-item{
         padding-left: 10px;
@@ -34,7 +35,7 @@
     color: $secondColor;
     }
     &__list-link--active{
-        color: $thirdColor;
+        color: $secondColor;
      }
 }
 
@@ -204,7 +205,7 @@
 
 .new-collection{
     text-align: center;
-    padding: 5px 0 35px;
+    padding: 45px 0 35px;
     &__title{
         color: $firstColor;
         font-size: 35px;
@@ -406,13 +407,125 @@
     }
   }
 
+.blog{
+    padding: 0 60px 100px;
+    &__inner{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__items{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    &__item-img{
+        max-height: 300px;
+        text-align: center;
+    }
+    &__aside{
+        width: 350px;
+        margin-left: 30px;
+        &-form{
+            position: relative;
+            margin-bottom: 40px;
+        }
+        &-form__input{
+            padding: 6px 45px 6px 18px;
+            border: 1px solid $firstColor;
+            border-radius: 20px;
+            display: block;
+            width: 100%;
+            &::placeholder{
+                font-weight: 700;
+                color: $firstColor;
+                font-size: 14px;
+                line-height: 27px;
+            }
+        }
+        &-form__btn{
+            border: none;
+            background-color: transparent;
+            position: absolute;
+            top: 10px;
+            right: 13px;
+            cursor: pointer;
 
-  
+        }
+    }
+    &__category{
+        margin-bottom: 36px;
+        &-title{
+            margin-bottom: 15px;
+            color: $firstColor;
+            font-weight: 700;
+            line-height: 23px;
+        }
+        &-item{
+            margin-bottom: 12px;
+
+        }
+        &-link{
+            color: inherit;
+        }
+    }
+    &-resent__posts{
+        margin-bottom: 40px;
+        &-title{
+            margin-bottom: 24px;
+            color: $firstColor;
+            font-weight: 700;
+            line-height: 23px;
+        }
+        &-item{
+            margin-bottom: 11px;
+        }
+        &-link{
+            display: block;
+            color: inherit;
+        }
+        &-date,
+        &-author{
+            color: #a1a1a1;
+            font-size: 14px;
+        }
+    }
+    &__tags-title{
+        margin-bottom: 24px;
+        color: $firstColor;
+        font-weight: 700;
+        line-height: 23px;
+    }
+    &__tags{
+        margin-bottom: 50px;
+        &-link{
+            color: $firstColor;
+            font-weight: 700;
+            line-height: 23px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            display: inline-block;
+            padding: 0 16px;
+            border: 1px solid #a1a1a1;
+            border-radius: 14px;
+        }
+
+    }
+    &-aside__social{
+        display: flex;
+    }
+}
+ 
+
 
  
 
 
 @media(max-width: 860px){
+
+    .logo img{
+        fill: $secondColor;
+    }
    
 
     .header__btn, .logo{
@@ -423,7 +536,7 @@
     .menu__list{
         position: absolute;
         z-index: 5;
-        background-color: $secondColor;
+        background-color: $firstColor;
         flex-direction: column;
         top: 120px;
         right: 0;
