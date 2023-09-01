@@ -1,3 +1,11 @@
+<?php
+
+
+require_once 'core/database/connect.php';
+
+?>
+
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -15,13 +23,13 @@
     
     <div class="wrapper">
 
-        <!--=include header.html -->
+    <?php require_once "core/components/header.php" ?>
         
         <main class="main">
-         <!--=include collection.html -->   
-         <!--=include slider.html --> 
+            <?php require_once "core/components/collection.php" ?>  
+            <?php require_once "core/components/slider.php" ?>
         </main>
-        <!--=include footer.html -->
+            <?php require_once "core/components/footer.php" ?>
         
     </div>
     

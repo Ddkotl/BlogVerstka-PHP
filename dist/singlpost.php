@@ -12,15 +12,15 @@
 </head>
 <body>
 
-      <!--=include header.html -->
-      <!--=include bread.html -->
+<?php require_once "core/components/header.php" ?>
+      <?php require_once "core/components/bread.php" ?>
       <section class="blog">
         <div class="container">
           <div class="blog__inner">
             <div class="blog__content">
     
             </div>
-             <!--=include aside.html -->
+            <?php require_once "core/components/aside.php" ?>
           </div>
         </div> 
       </section>
@@ -30,7 +30,7 @@
 
 
 
-      <!--=include footer.html -->
+      <?php require_once "core/components/footer.php" ?>
 
         <script src="js/main.min.js"></script>
 </body>

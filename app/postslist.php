@@ -1,3 +1,11 @@
+<?php
+
+
+require_once 'core/database/connect.php';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +20,8 @@
 </head>
 <body>
 
-      <!--=include header.html -->
-      <!--=include bread.html -->
+      <?php require_once "core/components/header.php" ?>
+      <?php require_once "core/components/bread.php" ?>
   <section class="blog">
     <div class="container">
       <div class="blog__inner">
@@ -36,8 +44,9 @@
            
             </div>
           </div>
+          <?php require_once "core/components/aside.php" ?>
         </div>
-         <!--=include aside.html -->
+        
       </div>
     </div> 
   </section>
@@ -47,7 +56,7 @@
 
 
 
-      <!--=include footer.html -->
+  <?php require_once "core/components/footer.php" ?>
 
         <script src="js/main.min.js"></script>
 </body>

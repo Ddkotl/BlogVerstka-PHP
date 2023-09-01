@@ -17,7 +17,7 @@ const ttf2woff2 = require('gulp-ttf2woff2');
 const include = require('gulp-include');
 
 function pages(){
-    return src('app/pages/*.html')
+    return src('app/pages/*.php')
     .pipe(include({
         includePaths: 'app/components'
     }))
@@ -101,16 +101,16 @@ function watching(){
     watch(['app/fonts/src'], fonts)   
     watch(['app/js/main.js'], scripts) 
     watch(['app/components/*','app/pages/*'], pages)  
-    watch(['app/**/*.html']).on('change',browserSync.reload)
+    watch(['app/**/*.php']).on('change',browserSync.reload)
 }
 
-function browsersync(){
-    browserSync.init({
-        server:{
-            baseDir:"app/"
-        }
-    });
-}
+// function browsersync(){
+//     browserSync.init({
+//         server:{
+//             baseDir:"app/"
+//         }
+//     });
+// }
 
 function cleanDist(){
     return src('dist')
@@ -125,7 +125,8 @@ function building(){
         'app/images/dist/**/sprite.svg',
         'app/fonts/dist/*.*',
         'app/js/main.min.js',
-        'app/*.html'
+        'app/*.php',
+        'app/**/*.php'
     ],{base:'app'})
     .pipe(dest('dist'))
 }
@@ -138,8 +139,8 @@ exports.fonts=fonts;
 exports.pages=pages;
 exports.scripts=scripts;
 exports.watching=watching;
-exports.browsersync=browsersync;
+// exports.browsersync=browsersync;
 
 exports.build=series(cleanDist,building);
 
-exports.default = parallel(styles,images,sprite,fonts,scripts,pages,browsersync,watching);
+exports.default = parallel(styles,images,sprite,fonts,scripts,pages,watching);

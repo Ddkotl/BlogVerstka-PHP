@@ -11,8 +11,8 @@
 
 </head>
 <body>
-      <!--=include header.html -->
-      <!--=include bread.html -->
+     <?php require_once "core/components/header.php" ?>
+     <?php require_once "core/components/bread.php" ?>
       <section class="about">
         <div class="about__prev">
           <div class="container">
@@ -34,7 +34,7 @@
       </section>
 
 
-      <!--=include footer.html -->
+      <?php require_once "core/components/footer.php" ?>
 
 
         <script src="js/main.min.js"></script>
