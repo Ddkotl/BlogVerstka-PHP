@@ -6,6 +6,7 @@
 
 .header{
     background-color: $firstColor;
+    box-shadow: 0 5px 45px rgba(0,0,0,0.7);
     &__inner{
         display: flex;
         justify-content: space-between;
@@ -18,6 +19,9 @@
         display: none;
         padding: 0;
         cursor: pointer;
+        & img:hover{
+            fill: $thirdColor;
+        }
     }
 }
 
@@ -28,11 +32,18 @@
         
     }
     &__list-item{
-        padding-left: 10px;
+        min-width: 120px;
+        text-align: center;
+        &:hover{
+            background-color: $firstColor;
+            box-shadow: 0 5px 20px rgba($color: $secondColor, $alpha: 1.0);
+        }
     }
     &__list-link{
-    @extend %title-font;
+    padding: 15px;
+    font-weight: 700;
     color: $secondColor;
+    display: block;
     }
     &__list-link--active{
         color: $secondColor;
@@ -41,7 +52,9 @@
 
 .logo{
     margin: 0 ;
-
+    & img:hover{
+        fill: $thirdColor;
+    }
 }
 
 .bread__crumbs{
@@ -515,13 +528,150 @@
         display: flex;
     }
 }
+
+.reg{
+    &__container{
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $fourColor;
+        transition: 1s;
+        &.active{
+            background-color: $thirdColor;
+            transition: 1s; 
+        }
+    }
+    &__form{
+        width: 800px;
+        height: 500px;
+        padding: 40px 0;
+        position: relative;
+        &-block{
+            height: 100%;
+            background-color: rgba($color: $firstColor, $alpha: .1);
+            box-shadow: 0 0px 45px rgba($color: $secondColor, $alpha: 1.0);
+            display: flex;
+            align-items: center;
+            &__item{
+                text-align: center;
+                width: 50%;
+                &-title{
+                    color: $secondColor;
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                    margin-bottom: 10px;
+                }
+                &-btn{
+                    min-width: 200px;
+                    border: none;
+                    cursor: pointer;
+                    padding: 10px 20px;
+                    background-color: $secondColor;
+                    color: $firstColor;
+                    font-size: 16px;
+                    font-weight: 400px;
+                }
+                &-btn:hover{
+                    background-color: rgba($color: $firstColor, $alpha: .1);
+                    box-shadow: 0 10px 15px rgba($color: $secondColor, $alpha: 1.0);
+                    color: $secondColor;
+                    transition: 0.2s ease-in-out;
+                }
+            }
+        }
+    }
+
+  }
+
+ .form-box{
+    background-color: $firstColor;
+    height: 100%;
+    width: 50%;
+    box-shadow: 0 5px 45px rgba($color: $secondColor, $alpha: 1.0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    transition: 0.5s ease-in-out;
+    overflow: hidden;
+    &.active{
+        left: 50%;
+        transition: 0.5s ease-in-out;
+    }
+    &__form{
+        width: 100%;
+        height: 100%;
+        padding: 50px;
+        font-size: 16px;
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+        flex-direction: column;
+        position: absolute;
+        transition: 0.5s;
+        &-title{
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: $secondColor;
+        }
+        &-signin{
+           left: 0;
+           transition-delay: 0.25s;
+        }
+        &-signup{
+            left: 100%;
+            transition-delay: 0s;
+        }
+        &-input{
+            width: 100%;
+            padding: 10px;
+            font-size: inherit;
+        }
+        &-btn{
+            min-width: 300px;
+            border: none;
+            cursor: pointer;
+            font-size: inherit;
+            padding: 10px 50px;
+            background-color: $fourColor;
+            color: $secondColor;
+            &:hover{
+                box-shadow: 0 0 15px rgba($color: $secondColor, $alpha: 1.0);
+                color: $secondColor;
+                transition: 0.2s ease-in-out;
+            }
+        }
+        &-btn__signup{
+            background-color: $thirdColor;
+        }
+        &-forgot{
+            color: $secondColor;
+        }
+    }
+    &__form p{
+        margin: 10px 0 10px 0;
+    }
+ } 
+ 
+.form-box.active .form-box__form-signin{
+    left: -100%;
+    transition-delay: 0s;
+
+}
+.form-box.active .form-box__form-signup{
+    left: 0;
+    transition-delay: 0.25s;
+
+}
+
+
+
+
  
 
 
- 
-
-
-@media(max-width: 860px){
+@media(max-width: 992px){
 
     .logo img{
         fill: $secondColor;
@@ -547,9 +697,60 @@
         align-items: center;
         transform: translateY(-100%);
         transition: transform 0.4s ease;
+        &-item{
+            min-width: 70%;
+            padding: 10px;
+            text-align: center;
+            &:hover{
+                background-color: $firstColor;
+                box-shadow: 0 10px 20px rgba($color: $secondColor, $alpha: 1.0);
+            }
+        }
      }
+     
   
      .menu__list.menu__list--active{
         transform: translateY(0);
+     }
+
+     .reg{
+        &__form{
+            max-width: 400px;
+            height: 650px;
+            padding: 50px 0 30px 0;
+            margin: 60px 20px;
+            padding: 0;
+            &-block{
+                flex-direction: column;
+                justify-content: space-between;
+                &__item{
+                    padding: 50px 0;
+                    width: 100%;
+                }
+            }
+            &-block__item-btn {
+                width: 95%;
+                padding: 10px;
+        }
+     }
+    }
+     .form-box{
+        padding: 0;
+        width: 100%;
+        height: 500px;
+        box-shadow: none;
+        top: 0;
+        &.active{
+            top: 150px;
+            left: 0;
+        }
+        &__form{
+            padding:55px 10px;
+            
+        }
+        &__form-btn{
+            width: 100%;
+            padding: 10px 0;
+        }
      }
 }

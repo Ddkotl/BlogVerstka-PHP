@@ -15,7 +15,7 @@
                         <a href="#" class="menu__list-link">Контакты</a>
                     </li>
                     <li class="menu__list-item">
-                        <a href="#" class="menu__list-link">Авторизация</a>
+                        <a href="registr.php" class="menu__list-link">Авторизация</a>
                     </li>
                 </ul>
             </nav>

@@ -2,6 +2,8 @@
 
 
 require_once 'core/database/connect.php';
+require_once '../vendor/autoload.php';
+
 
 ?>
 

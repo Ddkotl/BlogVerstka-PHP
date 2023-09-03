@@ -1,3 +1,13 @@
+<?php
+
+
+require_once 'core/database/connect.php';
+require_once '../vendor/autoload.php';
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

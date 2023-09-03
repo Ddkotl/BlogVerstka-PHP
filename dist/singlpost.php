@@ -1,3 +1,11 @@
+<?php
+
+
+require_once 'core/database/connect.php';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

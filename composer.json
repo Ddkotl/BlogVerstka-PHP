@@ -1,0 +1,17 @@
+{
+    "name": "dima/blog",
+    "autoload": {
+        "psr-4": {
+            "Dima\\Blog\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ddkotl",
+            "email": "no64129@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/var-dumper": "^6.3"
+    }
+}
