@@ -1,7 +1,11 @@
 <?php
+session_start();
 
 
-require_once 'core/database/connect.php';
+
+
+require_once 'core/functions.php';
+
 require_once '../vendor/autoload.php';
 
 
@@ -46,33 +50,50 @@ require_once '../vendor/autoload.php';
             <div class="form-box">
                 <form 
                 action="core/actions/login.php" 
-                method="$_POST" 
+                method="POST" 
                 class="form-box__form form-box__form-signin">
                     <h3 class="form-box__form-title">Вход</h3>
                     <p>
                         <input 
+                        id="loginin"
+                        name="loginin"
                         type="text" 
-                        placeholder="Логин или почта" 
-                        class="form-box__form-input">
+                        placeholder="Ваша электронная почта" 
+                        class="form-box__form-input"
+                        value="<?php echo old('loginin') ?>"
+                        >
+                        <?php if(hasValidationError('loginin')): ?>
+                        <small class="small"><?php echo validationErrorMessage('loginin');?></small>
+                        <?php endif; ?>
                     </p>
                     <p>
                         <input 
+                        id="passwordin"
+                        name="passwordin"
                         type="password" 
                         placeholder="Пароль" 
-                        class="form-box__form-input">
+                        class="form-box__form-input"
+                        >
+                        <?php if(hasValidationError('passwordin')): ?>
+                        <small class="small"><?php echo validationErrorMessage('passwordin');?></small>
+                        <?php endif; ?>
                     </p>
                     <p>
                         <button 
-                        class="form-box__form-btn">Войти</button>
+                        class="form-box__form-btn"
+                        type="submit"
+                        id="submitin"
+                        >
+                        Войти
+                        </button>
                     </p>
                     <p>
-                        <a href="#" class="form-box__form-forgot">Восстановить пароль</a>
+                        <a href="#" class="form-box__form-forgot">Забыли пароль? Восстановить</a>
                     </p>
                 </form>
                 <form 
                 action="core/actions/register.php" 
-                method="$_POST" 
-                enctype="multipart/form-data" 
+                method="POST" 
                 class="form-box__form form-box__form-signup">
                     <h3 class="form-box__form-title">Регистрация</h3>
                     <p>
@@ -81,36 +102,65 @@ require_once '../vendor/autoload.php';
                         name="login"
                         type="text" 
                         placeholder="Логин" 
-                        aria-invalid="true"
                         class="form-box__form-input"
-                        required >
+                        value="<?php echo old('login') ?>"
+                        <?php validationErrorAttr('login') ?>
+                        >
+                        <?php if(hasValidationError('login')): ?>
+                        <small class="small"><?php echo validationErrorMessage('login');?></small>
+                        <?php endif; ?>
                     </p>
                     <p>
                         <input 
+                        id="email"
+                        name="email"
                         type="email" 
                         placeholder="Электронная почта" 
-                        class="form-box__form-input">
+                        class="form-box__form-input"
+                        value="<?php echo old('email') ?>"
+                        >
+                        <?php if(hasValidationError('email')): ?>
+                        <small class="small"><?php echo validationErrorMessage('email');?></small>
+                        <?php endif ;?>
                     </p>
                     <p>
                         <input 
                         type="password" 
+                        id="password"
+                        name="password"
                         placeholder="Пароль" 
-                        class="form-box__form-input">
+                        class="form-box__form-input"
+                        >
+                        <?php if(hasValidationError('password')): ?>
+                        <small class="small"><?php echo validationErrorMessage('password');?></small>
+                        <?php endif; ?>
                     </p>
+
                     <p>
                          <input 
                          type="password" 
+                         id="password_confirmation"
+                         name="password_confirmation"
                          placeholder="Подтвердите пароль" 
-                         class="form-box__form-input">
+                         class="form-box__form-input"
+                        >
+                        <?php if(hasValidationError('passwordConfirmation')): ?>
+                        <small class="small"><?php echo validationErrorMessage('passwordConfirmation');?></small>
+                        <?php endif; ?>
                     </p>
                     <p>
                         <button 
-                        class="form-box__form-btn form-box__form-btn__signup">Зарегестрироваться</button>
+                        class="form-box__form-btn form-box__form-btn__signup"
+                        type="submit"
+                        id="submit"
+                        >Зарегестрироваться
+                    </button>
                     </p>
                 </form>
             </div>
         </div>
     </div>       
+
 
     <script src="js/main.min.js"></script>
 </body>

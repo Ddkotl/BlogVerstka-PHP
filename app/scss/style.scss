@@ -627,6 +627,7 @@
             width: 100%;
             padding: 10px;
             font-size: inherit;
+            border: 1px solid $secondColor;
         }
         &-btn{
             min-width: 300px;
@@ -663,6 +664,15 @@
     left: 0;
     transition-delay: 0.25s;
 
+}
+
+small.small{
+    color: $secondColor;
+    width: 100%;
+    display: block;
+    border: 1px solid $secondColor;
+    border-top: none;
+    font-size: 12px;
 }
 
 
@@ -751,6 +761,7 @@
         &__form-btn{
             width: 100%;
             padding: 10px 0;
+            min-width: 90%;
         }
      }
 }
