@@ -44,3 +44,33 @@ function getPDO():PDO{
     }
 }
 
+function currentUser(){
+    $pdo = getPDO();
+
+    if(!isset($_SESSION['user'])){
+        return false;
+    }
+
+    $userId = $_SESSION['user']['id'] ?? null;
+
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE `id` = :id");
+    $stmt->execute(['id'=> $userId]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function logOut(){
+    unset($_SESSION['user']['id']);
+    redirect('../../index.php');
+}
+
+function checkAuth(){
+    if(!isset($_SESSION['user']['id'])){
+        redirect('registr.php');
+    }
+}
+
+function checkTrueReqerst($path){
+    if(!(($_SERVER['REQUEST_METHOD']) === 'POST')){
+    redirect($path);
+ }
+}

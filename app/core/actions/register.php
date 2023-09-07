@@ -6,14 +6,13 @@ session_start();
 require_once '../functions.php';
 require_once '../../../vendor/autoload.php';
 
+checkTrueReqerst('../../index.php');
+
 
 $login = $_POST['login'] ?? null;
 $email = $_POST['email'] ?? null;
 $password = $_POST['password'] ?? null;
 $passwordConfirmation = $_POST['password_confirmation'] ?? null;
-
-addOldValue('login',$login);
-addOldValue('email',$email);
 
 if(empty($login)){
     addValidationError('login','Неверное имя');
@@ -32,16 +31,19 @@ if(!($password === $passwordConfirmation)){
 }
 
 if(!empty($_SESSION['validation'])){
+    addOldValue('login',$login);
+    addOldValue('email',$email);
     redirect('../../registr.php');
 }
 
 $pdo = getPDO();
 
-$query = "INSERT INTO users (login,email,password) VALUES (:login,:email,:password)";
+$query = "INSERT INTO users (login,email,password,admin) VALUES (:login,:email,:password,:admin)";
 $params = [
     'login' => $login,
     'email' => $email,
-    'password' => password_hash($password,PASSWORD_DEFAULT)
+    'password' => password_hash($password,PASSWORD_DEFAULT),
+    'admin' => 0
 ];
 $stmt = $pdo->prepare($query);
 

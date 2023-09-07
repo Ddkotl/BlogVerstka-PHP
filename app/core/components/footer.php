@@ -46,7 +46,7 @@
                             <a href="#" class="footer__menu-link">FAQ</a>
                         </li>
                         <li class="footer__menu-item">
-                            <a href="about.php" class="footer__menu-link">О нас</a>
+                            <a href="#" class="footer__menu-link">Контакты</a>
                         </li>
                     </ul>
                 </nav>

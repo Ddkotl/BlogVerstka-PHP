@@ -1,32 +1,16 @@
 <?php
 session_start();
-
-
-
-
+require_once '../vendor/autoload.php'; 
 require_once 'core/functions.php';
-
-require_once '../vendor/autoload.php';
-
-
+require_once 'path.php';
 ?>
 
 
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Авторизация</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.min.css">
-</head>
-<body>
+
+<?php require_once "core/components/top.php" ?>
 <?php require_once "core/components/header.php" ?>
+
+
    <div class="reg__container">
         <div class="reg__form">
             <div class="reg__form-block">
@@ -161,7 +145,5 @@ require_once '../vendor/autoload.php';
         </div>
     </div>       
 
-
-    <script src="js/main.min.js"></script>
-</body>
-</html>
+<?php require_once "core/components/testdata.php" ?>
+<?php require_once "core/components/bot.php" ?>

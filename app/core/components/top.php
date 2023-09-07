@@ -1,13 +1,3 @@
-<?php
-
-
-require_once 'core/database/connect.php';
-require_once '../vendor/autoload.php';
-
-
-?>
-
-
 <!doctype html>
 <html lang="ru">
 <head>
@@ -22,19 +12,3 @@ require_once '../vendor/autoload.php';
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 <body>
-    
-    <div class="wrapper">
-
-    <?php require_once "core/components/header.php" ?>
-
-    <main class="main">
-           
-    </main>
-
-    <?php require_once "core/components/footer.php" ?>
-
-    </div>
-
-    <script src="js/main.min.js"></script>
-</body>
-</html>

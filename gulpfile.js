@@ -76,6 +76,7 @@ function scripts(){
     return src([
         'app/js/swiper-bundle.min.js',
         'app/js/main.js'
+        
     ])
     .pipe(concat('main.min.js'))
     .pipe(uglify())

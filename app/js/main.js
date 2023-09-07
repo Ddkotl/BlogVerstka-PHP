@@ -6,21 +6,23 @@ menuButton.addEventListener('click',() => {
   });
 
 
-const singInBtn = document.querySelector('.singin__btn');
-const singUpBtn = document.querySelector('.singup__btn');
-const formBox = document.querySelector('.form-box');
-const regContainer = document.querySelector('.reg__container')
-
-singUpBtn.addEventListener('click',function(){
-  formBox.classList.add('active');
-  regContainer.classList.add('active');
-});
-
-singInBtn.addEventListener('click',function(){
-  formBox.classList.remove('active');
-  regContainer.classList.remove('active');
-});
-
+  const singInBtn = document.querySelector('.singin__btn');
+  const singUpBtn = document.querySelector('.singup__btn');
+  const formBox = document.querySelector('.form-box');
+  const regContainer = document.querySelector('.reg__container');
+  
+if(singUpBtn){
+  singUpBtn.addEventListener('click',function(){
+    formBox.classList.add('active');
+    regContainer.classList.add('active');
+  });
+}
+if(singInBtn){
+  singInBtn.addEventListener('click',function(){
+    formBox.classList.remove('active');
+    regContainer.classList.remove('active');
+  });
+}
 
   let swiper = new Swiper(".mySwiper", {
     spaceBetween: 30,

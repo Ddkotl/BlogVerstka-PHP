@@ -4,10 +4,10 @@ session_start();
 require_once '../functions.php';
 require_once '../../../vendor/autoload.php';
 
+checkTrueReqerst('../../index.php');
+
 $loginIn = $_POST['loginin'] ?? null;
 $passwordIn = $_POST['passwordin'] ?? null;
-
-addOldValue('loginin',$loginIn);
 
 if(empty($loginIn)){
     addValidationError('loginin','Введите электронную почту');
@@ -46,6 +46,7 @@ if(!empty($passwordIn)){
 }
 
 if(!empty($_SESSION['validation'])){
+    addOldValue('loginin',$loginIn);
     redirect('../../registr.php');
 }
 
