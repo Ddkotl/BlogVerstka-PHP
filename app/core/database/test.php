@@ -1,89 +1,116 @@
 <?php
 
 require_once '../../../vendor/autoload.php';
-// $host='lamp-mysql8';
-// $data='blog';
-// $user='root';
-// $password='4236'; 
+require_once 'configDB.php';
+require_once '../functions.php';
+
+function checkErrorPreparingToRequest($var){
+    $errorInfo = $var->errorInfo();
+
+    if($errorInfo[0] !== PDO::ERR_NONE){
+        echo $errorInfo[2];
+        exit();
+    }
+    return true;
+}
+
+function seleclAllFromTable($table, $params=[]){
+    $pdo=getPDO();
+    $sql="SELECT * FROM $table";
+    if(!empty($params)){
+        $i=0;
+        foreach($params as $key => $value){
+            if(!is_numeric($value)){
+                $value = "'" . $value . "'";
+            }
+            if($i === 0){
+                $sql = $sql . " WHERE $key = $value";
+            }else{
+                $sql = $sql . " AND $key = $value";
+            }
+            $i++;
+        }
+    }
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    checkErrorPreparingToRequest($query);
+    return $query->fetchAll(); 
+}
+
+function selectOneStringFromTable($table, $params=[]){
+    $pdo=getPDO();
+    $sql="SELECT * FROM $table";
+    if(!empty($params)){
+        $i=0;
+        foreach($params as $key => $value){
+            if(!is_numeric($value)){
+                $value = "'" . $value . "'";
+            }
+            if($i === 0){
+                $sql = $sql . " WHERE $key = $value";
+            }else{
+                $sql = $sql . " AND $key = $value";
+            }
+            $i++;
+        }
+    }
+    $sql = $sql . " LIMIT 1";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    checkErrorPreparingToRequest($query);
+    return $query->fetch(); 
+}
+
+function insertRecordIntoTable($table,$params){
+    $pdo=getPDO();
+    $i=0;
+    $row = '';
+    $mask = '';
+    foreach ($params as $key => $value){
+        if($i === 0){
+            $row = $row . "$key";
+            $mask = $mask . ":$key";
+        }else{
+        $row = $row . "," . " $key";
+        $mask = $mask . "," . " :$key";
+        }
+        $i++;
+    }
+    $sql ="INSERT INTO $table ($row) VALUES ($mask)";
+    $query = $pdo->prepare($sql);
+    $query->execute($params);
+    checkErrorPreparingToRequest($query);
+}
+
+function updateRecordIntoTable($table, $id, $params){
+    $pdo=getPDO();
+    $i=0;
+    $str = '';
+    foreach ($params as $key => $value){
+        if($i === 0){
+            $str = $str . $key  . " = ':" . $key ."'";
+        }else{
+            $str = $str . "," . $key . " = ':" . $key ."'";
+        }
+        $i++;
+    }
+    $sql ="UPDATE $table SET $str WHERE id = $id";
+    // dump($sql);
+    // exit();
+    $query = $pdo->prepare($sql);
+    $query->execute($params);
+    checkErrorPreparingToRequest($query);
+}
 
 
-// const DB_DRIVER = 'mysql';
-// const DB_HOST = 'lamp-mysql8';
-// const DB_NAME = 'blog';
-// const DB_USER = 'dima';
-// const DB_PASS = '4236';
-// const DB_CHARSET = 'utf8';
-// const DB_PORT = '3306';
-// const DB_OPTIONS = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
-
-// try{
-//     $connection = new PDO(DB_DRIVER.':dbname='.DB_NAME.';host='.DB_HOST.';port='.DB_PORT.';charset='.DB_CHARSET,DB_USER, DB_PASS, DB_OPTIONS);
-// }catch(PDOException $e){
-//     echo('BD connection error: '.$e->getMessage());
-// }
 
 
+$params = [
+    'login' => 'tytyt',
+    'email' => 'cghj@mail.ru',
+    'avatar' => NULL,
+    'password' => '123',
+    'admin' => '0'
+];
 
-//$connection = new PDO(DB_DRIVER.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
-// $connection = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
-
-// if($connection->connect_error) die('error connecton');
-
-// $query12= "SELECT * FROM users";
-// $result= $connection->query($query12);
-
-// if(!$result) die('error data');
-
-// $rows = $result->num_rows;
-
-// for($i=0;$i<$rows;++$i){
-//     $result->data_seek($i);
-//     echo 'email:' . $result->fetch_assoc()['email'] . '<br>';
-// }
-
-// $result->close();
-// $connection->close();
-
-// $pdo =  new PDO(DB_DRIVER.':dbname='.DB_NAME.';host='.DB_HOST.';port='.DB_PORT.';charset='.DB_CHARSET,DB_USER, DB_PASS, DB_OPTIONS);
-// if(!$pdo) echo('error data');
-
-
-// try{
-//     $connection =  new PDO(DB_DRIVER.':dbname='.DB_NAME.';host='.DB_HOST.';port='.DB_PORT.';charset='.DB_CHARSET,DB_USER, DB_PASS, DB_OPTIONS);
-// }catch(PDOException $e){
-//     echo('BD connection error: '.$e->getMessage());
-// }
-
-
-// $query12= "INSERT INTO users (login,email,password) VALUES ('klim11','11klim@mail.ru','41156654')";
-// $count = $connection->exec($query12);
-
-
-// $query = "INSERT INTO users (login,email,password) VALUES (:login,:email,:password)";
-// $params = [
-//     'login' => 'dd12dddd',
-//     'email' => 'eeee12eeeeee',
-//     'password' => 123123456
-// ];
-// $stmt = $connection->prepare($query);
-
-// try{
-//     $stmt->execute($params);
-// }catch(Exception $e){
-//     die('Data error: '.$e->getMessage());
-// }
-
-
-//     $query = "INSERT INTO users (login,email,password) VALUES (:login,:email,:password)";
-// $params = [
-//     'login' => 'dddddd',
-//     'email' => 'eeeeeeeeee',
-//     'password' => 123456
-// ];
-// $stmt = $pdo->prepare($query);
-
-// try{
-//     $stmt->execute($params);
-// }catch(\Exception $e){
-//     die($e->getMessage());
-// }
+updateRecordIntoTable('users',171,$params);
